@@ -14,14 +14,21 @@
     </head>
     <body>
         <%
-            UserDTO user = (UserDTO)request.getAttribute("user");
+            UserDTO user = (UserDTO) session.getAttribute("user");
+            if (user != null) {
         %>
-        
+
         Welcome <%=user.getFullName()%>,<br/>
+        <a href="MainController?action=logout">Logout</a> <br/>
         Bang dieu khien <br/>
         Tinh nang 1 <br/>
         Tinh nang 2 <br/>
         Tinh nang 3 <br/>
+        <%
+            } else {
+                response.sendRedirect("login.jsp");
+            }
+        %>
     </body>
 
 </html>
